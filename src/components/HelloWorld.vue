@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Configuration, OpenAIApi } from "openai";
+import { Button as AButton, Input as AInput } from "ant-design-vue";
 
 const input = ref('')
 const text = ref('')
@@ -29,7 +30,7 @@ const clickInput = async () => {
   });
   text.value = completion?.data?.choices?.[0]?.text as string || 'g'
   console.log('completion', completion)
-    
+
 }
 
 </script>
@@ -37,7 +38,7 @@ const clickInput = async () => {
 <template>
   <a-input v-model:value="apiKey" placeholder="apiKey" />
   <a-input v-model:value="input" placeholder="搜索值" />
-  <Button @click="clickInput">检索</Button>
+  <a-button @click="clickInput">检索</a-button>
   <p>{{ text }}</p>
 </template>
 
